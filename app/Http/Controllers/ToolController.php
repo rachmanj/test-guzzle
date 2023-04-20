@@ -3,9 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ToolController extends Controller
 {
+    // get equipments using Http client
+    public function getApiEquipments()
+    {
+        $url = env('URL_EQUIPMENTS');
+
+        $response = Http::get($url);
+
+        return $response;
+    }
+
+
     public function getEquipments($project = null)
     {
         $url = env('URL_EQUIPMENTS');
